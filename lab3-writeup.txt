@@ -1,0 +1,8 @@
+Group member: Fei Zhao, Ye Xue
+
+For IntHistogram, we just followed the bucket-based method provided in the lab assignment sheet.
+For tablestats, we created several maps (eg. min, max, hist) to keep track the status. We used iterator to go through the given file to fulfill the min/max tracker, then rewind the iterator to go over and create the histograms.
+For estimateSelectivity, we used the previous implemented function histogram.estimateSelectivity to implement.
+For estimateJoinCost and estimateJoinCardinality, we simply followed the instruction and did some math work. For join ordering, since the pseudocode gave a clear path and we had handy helper methods like enumerateSubsets, it didn’t make a big difficulty.
+
+We took around 9-10 hours on this project.

@@ -1,0 +1,11 @@
+Group member: Fei Zhao, Ye Xue
+
+Following the suggestions in the lab4 document, we define a LockManager class that is responsible for maintaining state about transactions and lock. The LockManager supports acquiring locks for transactions, checking if a transaction is locked on a page and deadlock detection.
+
+We choose page-level locking granularity. In the LockManager, we use maps to track transactions and related pages.
+
+For deadlock detection, we implement a cycle-detection in a dependency graph. The dependency graph is stored in the LockManager class as a map with keys being transaction IDs and values being the dependency transactions. A DFS algorithm is implemented to detect in the graph if a transaction is linked to itself.
+
+When a deadlock occurs, we aborts all transactions that the current transaction is waiting for. Although this may result in a large amount of work being undone, the implementation for this strategy is straightforward and importantly we can guarantee that the current transaction makes progress.
+
+We took around 15 hours on this project.

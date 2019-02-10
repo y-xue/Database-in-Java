@@ -1,0 +1,7 @@
+In this lab, the most interesting design decision I made should be creating AggregateIntField and AggregateStringField class. These two classes has two members, val, the content of the field, and count, the count of operations done when doing aggregation. In AggregateIntField objects, val is Integer and in AggregateStringField objects, val is String. Having these classes, I create a Map to store the aggregation information (saved in AggregateIntField and AggregateStringField objects) for each Field.
+
+For the eviction policy, right now I just randomly evict a page.
+
+I add one more method in the Aggregator interface, called getTupleDesc. In both IntegerAggregator and StringAggregator class, similar operation is required to create TupleDesc objects based on whether gbfield is NO_GROUPING or not. Therefore, I add this method to make the code more readable. Another advantage of adding this method is that when implementing getTupleDesc of Aggregate class, it’s straightforward and concise, since we can just let the aggregator that is associated with the Aggregate object call its getTupleDesc method without rewriting similar codes to create new TupleDesc.
+
+The most difficult part for me is around modifying pages, especially when working with physical file on disk. The I/O operations in Java is a little complicated for me. I spent about 15 hours to finish lab2.
